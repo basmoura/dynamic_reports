@@ -15,10 +15,12 @@ class ReportsController < ApplicationController
   # GET /reports/new
   def new
     @report = Report.new
+    @report_details = YAML::load(File.open('app/models/ymls/takeway_points.yml'))
   end
 
   # GET /reports/1/edit
   def edit
+    @report_details = YAML::load(File.open('app/models/ymls/takeway_points.yml'))
   end
 
   # POST /reports
@@ -69,6 +71,7 @@ class ReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:behavior_change, :takeaway_points, :decision_making, :comments)
+      params.require(:report).permit(:behavior_change, :comments,
+                                     :decision_making, takeaway_points: [])
     end
 end
