@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  behavior_change: false
+  takeaway_points: MyString
+  decision_making: MyString
+  comments: MyText
+
+two:
+  behavior_change: false
+  takeaway_points: MyString
+  decision_making: MyString
+  comments: MyText
