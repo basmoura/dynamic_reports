@@ -1,23 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Behavior change:</strong>
-  <%= @report.behavior_change %>
-</p>
-
-<p>
   <strong>Takeaway points:</strong>
-  <%= @report.takeaway_points %>
-</p>
-
-<p>
-  <strong>Decision making:</strong>
-  <%= @report.decision_making %>
-</p>
-
-<p>
-  <strong>Comments:</strong>
-  <%= @report.comments %>
+  <div class="summernote">
+    <ul>
+      <% @report.takeaway_points.reject(&:empty?).each do |r| %>
+        <li><%= t r %></li>
+      <% end %>
+    </ul>
+  </div>
 </p>
 
 <%= link_to 'Edit', edit_report_path(@report) %> |

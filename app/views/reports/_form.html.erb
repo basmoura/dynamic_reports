@@ -1,37 +1,22 @@
-<%= form_for(report) do |f| %>
-  <% if report.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
-
-      <ul>
-      <% report.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="row">
+  <div class="col-md-12">
+    <%= simple_form_for(@report) do |f| %>
+      <% @report_details.each do |r, v| %>
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href=<%= "##{r}" %> role="button" aria-expanded="false" aria-controls="collapseExample">
+            <%= r.capitalize %>
+          </a>
+        </p>
+        <div class="collapse" id=<%= r %>>
+          <div class="card card-body">
+            <% v.each do |k, vv| %>
+              <%= f.input :takeaway_points, label: false, as: :check_boxes, collection: { "#{vv}" => k }, checked: f.object.takeaway_points %>
+            <% end %>
+          </div>
+        </div>
+        <br/>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :behavior_change %>
-    <%= f.check_box :behavior_change %>
+      <%= f.submit %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :takeaway_points %>
-    <%= f.text_field :takeaway_points %>
-  </div>
-
-  <div class="field">
-    <%= f.label :decision_making %>
-    <%= f.text_field :decision_making %>
-  </div>
-
-  <div class="field">
-    <%= f.label :comments %>
-    <%= f.text_area :comments %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
