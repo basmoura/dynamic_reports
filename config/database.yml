@@ -51,7 +51,7 @@ production:
   adapter: mysql2
   encoding: utf8
   pool: 5
-  host: wiad5ra41q8129zn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
-  database: bjlqs7crqj7wt0jo
-  username: v82dttaszr2eetn8
-  password: yhh0irwlgf1mhv9w
+  host: <%= ENV['DB_HOST'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
