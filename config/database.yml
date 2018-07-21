@@ -48,7 +48,10 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: dynamic-report_production
-  username: dynamic-report
-  password: <%= ENV['DYNAMIC-REPORT_DATABASE_PASSWORD'] %>
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  host: wiad5ra41q8129zn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
+  database: bjlqs7crqj7wt0jo
+  username: v82dttaszr2eetn8
+  password: yhh0irwlgf1mhv9w
